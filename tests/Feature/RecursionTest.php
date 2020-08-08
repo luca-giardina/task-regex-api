@@ -16,13 +16,13 @@ class RecursionTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->postJson('/api/recursion', [
-            'string' => 'abc'
+        $response = $this->postJson("/api/recursion", [
+            "string" => "abc"
         ]);
 
         $response->assertStatus(200)
         ->assertJson([
-            'string' => 'cba'
+            "string" => "cba"
         ]);
     }
 
@@ -35,13 +35,13 @@ class RecursionTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->postJson('/api/recursion', [
-            'string' => 'this need to be reversed'
+        $response = $this->postJson("/api/recursion", [
+            "string" => "this need to be reversed"
         ]);
 
         $response->assertStatus(200)
         ->assertJson([
-            'string' => 'desrever eb ot deen siht'
+            "string" => "desrever eb ot deen siht"
         ]);
     }
     /**
@@ -51,8 +51,8 @@ class RecursionTest extends TestCase
      */
     public function testRecursionStringIsRequired()
     {
-        $response = $this->postJson('/api/recursion', [
-            'string' => ''
+        $response = $this->postJson("/api/recursion", [
+            "string" => ""
         ]);
 
         $response->assertStatus(422);
