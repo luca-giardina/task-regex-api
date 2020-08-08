@@ -49,7 +49,7 @@ class WordCountTest extends TestCase
          ]);
      }
 
-     public function testWordCount3()
+     public function testWordCountStringIsRequired()
      {
          $response = $this->postJson("/api/word-count", [
              "string" => ""

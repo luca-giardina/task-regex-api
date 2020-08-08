@@ -55,7 +55,7 @@ class PalindrimesTest extends TestCase
          ]);
      }
 
-     public function testPalindrimes4()
+     public function testPalindrimesStringIsRequired()
      {
          $response = $this->postJson("/api/palindrimes", [
              "string" => ""

@@ -49,7 +49,7 @@ class RecursionTest extends TestCase
      *
      * @return void
      */
-    public function testRecursion3()
+    public function testRecursionStringIsRequired()
     {
         $response = $this->postJson('/api/recursion', [
             'string' => ''
