@@ -27,4 +27,32 @@ class PalindrimesTest extends TestCase
          ]);
      }
 
+     public function testPalindrimes2()
+     {
+         $this->withoutExceptionHandling();
+
+         $response = $this->postJson('/api/palindrimes', [
+             'string' => "Madam, I'm Adam!"
+         ]);
+
+         $response->assertStatus(200)
+         ->assertJson([
+             'result' => true
+         ]);
+     }
+
+     public function testPalindrimes3()
+     {
+         $this->withoutExceptionHandling();
+
+         $response = $this->postJson('/api/palindrimes', [
+             'string' => "Abracadabra"
+         ]);
+
+         $response->assertStatus(200)
+         ->assertJson([
+             'result' => false
+         ]);
+     }
+
 }

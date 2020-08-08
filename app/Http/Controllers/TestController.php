@@ -17,6 +17,16 @@ class TestController extends Controller
         ];
     }
 
+    public function palindrimes(Request $request) {
+        $data = $request->validate([
+            'string' => 'required|string'
+        ]);
+
+        return [
+            'result' => true
+        ];
+    }
+
     private function reverseString($aStr) {
         if(count($aStr) == 1) {
             return $aStr[0];

@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post('recursion', 'TestController@recursion');
+Route::post('palindrimes', 'TestController@palindrimes');
