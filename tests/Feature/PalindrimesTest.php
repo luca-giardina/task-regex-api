@@ -17,13 +17,13 @@ class PalindrimesTest extends TestCase
      {
          $this->withoutExceptionHandling();
 
-         $response = $this->postJson('/api/palindrimes', [
-             'string' => 'A man, a plan, a canal -- Panama'
+         $response = $this->postJson("/api/palindrimes", [
+             "string" => "A man, a plan, a canal -- Panama"
          ]);
 
          $response->assertStatus(200)
          ->assertJson([
-             'result' => true
+             "result" => true
          ]);
      }
 
@@ -31,13 +31,13 @@ class PalindrimesTest extends TestCase
      {
          $this->withoutExceptionHandling();
 
-         $response = $this->postJson('/api/palindrimes', [
-             'string' => "Madam, I'm Adam!"
+         $response = $this->postJson("/api/palindrimes", [
+             "string" => "Madam, I'm Adam!"
          ]);
 
          $response->assertStatus(200)
          ->assertJson([
-             'result' => true
+             "result" => true
          ]);
      }
 
@@ -45,14 +45,23 @@ class PalindrimesTest extends TestCase
      {
          $this->withoutExceptionHandling();
 
-         $response = $this->postJson('/api/palindrimes', [
-             'string' => "Abracadabra"
+         $response = $this->postJson("/api/palindrimes", [
+             "string" => "Abracadabra"
          ]);
 
          $response->assertStatus(200)
          ->assertJson([
-             'result' => false
+             "result" => false
          ]);
+     }
+
+     public function testPalindrimes4()
+     {
+         $response = $this->postJson("/api/palindrimes", [
+             "string" => ""
+         ]);
+
+         $response->assertStatus(422);
      }
 
 }

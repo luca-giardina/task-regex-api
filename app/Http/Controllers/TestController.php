@@ -23,8 +23,13 @@ class TestController extends Controller
         ]);
 
         return [
-            'result' => true
+            'result' => $this->palindrome($data["string"])
         ];
+    }
+
+    private function palindrome($string) {
+        $string = strtolower(preg_replace("/[^a-zA-Z]+/", "", $string));
+        return $string == $this->reverseString(str_split($string));
     }
 
     private function reverseString($aStr) {
