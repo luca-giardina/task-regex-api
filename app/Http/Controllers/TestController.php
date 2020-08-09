@@ -16,7 +16,7 @@ class TestController extends Controller
         }
         catch(\Exception $e) {
             return response()->json([
-                "message" => "Internal Error"
+                "message" => $this->aError["500"]
             ], 500);
         }
         return [
@@ -27,16 +27,31 @@ class TestController extends Controller
     public function palindrimes(Request $request) {
         $data = $this->validateString($request);
 
+        try {
+            $result = Helpers::palindrome($data["string"]);
+        }
+        catch(\Exception $e) {
+            return response()->json([
+                "message" => $this->aError["500"]
+            ], 500);
+        }
         return [
-            'result' => Helpers::palindrome($data["string"])
+            'result' => $result
         ];
     }
 
     public function wordCount(Request $request) {
         $data = $this->validateString($request);
-
+        try {
+            $result = Helpers::countWords($data["string"]);
+        }
+        catch(\Exception $e) {
+            return response()->json([
+                "message" => $this->aError["500"]
+            ], 500);
+        }
         return [
-            'result' => Helpers::countWords($data["string"])
+            'result' => $result
         ];
     }
 
@@ -50,7 +65,7 @@ class TestController extends Controller
 
             if(json_last_error()) {
                 return response()->json([
-                        "message" =>"Invalid JSON"
+                        "message" => $this->aError["422"]
                     ], 422);
             }
 
@@ -58,7 +73,7 @@ class TestController extends Controller
         }
         catch(\Exception $e) {
             return response()->json([
-                "message" => "Internal Error"
+                "message" => $this->aError["500"]
             ], 500);
         }
 

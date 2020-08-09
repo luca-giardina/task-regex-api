@@ -11,6 +11,11 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    protected $aError = [
+        "500" => "Internal Error",
+        "422" => "Invalid JSON",
+    ];
+
     protected function validateString($request) {
         return $request->validate([
             'string' => 'required|string'
