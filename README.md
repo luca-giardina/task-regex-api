@@ -2,6 +2,7 @@
 
 laravel needs special permissions for writing in the storage folder, please change it with chmod if using linux/mac
 
+
 ## CMD
 
 clone the repository
@@ -11,6 +12,14 @@ run `cp .env.example .env`
 run `composer install`
 
 run `php artisan key:generate`
+
+
+## RUN TESTS
+
+run `php artisan test`
+
+
+## USER TEST
 
 run `php artisan serve` to start the web server
 
