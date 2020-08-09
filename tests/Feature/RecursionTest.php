@@ -22,7 +22,7 @@ class RecursionTest extends TestCase
 
         $response->assertStatus(200)
         ->assertJson([
-            "string" => "cba"
+            "result" => "cba"
         ]);
     }
 
@@ -41,7 +41,7 @@ class RecursionTest extends TestCase
 
         $response->assertStatus(200)
         ->assertJson([
-            "string" => "desrever eb ot deen siht"
+            "result" => "desrever eb ot deen siht"
         ]);
     }
     /**
@@ -52,7 +52,7 @@ class RecursionTest extends TestCase
     public function testRecursionStringIsRequired()
     {
         $response = $this->postJson("/api/recursion", [
-            "string" => ""
+            "result" => ""
         ]);
 
         $response->assertStatus(422);

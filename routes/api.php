@@ -21,3 +21,4 @@ use Illuminate\Support\Facades\Route;
 Route::post('recursion', 'TestController@recursion');
 Route::post('palindrimes', 'TestController@palindrimes');
 Route::post('word-count', 'TestController@wordCount');
+Route::post('anagram', 'TestController@anagram');

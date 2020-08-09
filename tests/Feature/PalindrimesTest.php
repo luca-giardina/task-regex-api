@@ -13,33 +13,34 @@ class PalindrimesTest extends TestCase
      *
      * @return void
      */
-     public function testPalindrimes()
-     {
-         $this->withoutExceptionHandling();
+     // public function testPalindrimes()
+     // {
+     //     $this->withoutExceptionHandling();
+     //
+     //     $response = $this->postJson("/api/palindrimes", [
+     //         "string" => "A man, a plan, a canal -- Panama"
+     //     ]);
+     //
+     //     $response->assertStatus(200)
+     //     ->assertJson([
+     //         "result" => true
+     //     ]);
+     // }
+     //
+     // public function testPalindrimes2()
+     // {
+     //     $this->withoutExceptionHandling();
+     //
+     //     $response = $this->postJson("/api/palindrimes", [
+     //         "string" => "Madam, I'm Adam!"
+     //     ]);
+     //
+     //     $response->assertStatus(200)
+     //     ->assertJson([
+     //         "result" => true
+     //     ]);
+     // }
 
-         $response = $this->postJson("/api/palindrimes", [
-             "string" => "A man, a plan, a canal -- Panama"
-         ]);
-
-         $response->assertStatus(200)
-         ->assertJson([
-             "result" => true
-         ]);
-     }
-
-     public function testPalindrimes2()
-     {
-         $this->withoutExceptionHandling();
-
-         $response = $this->postJson("/api/palindrimes", [
-             "string" => "Madam, I'm Adam!"
-         ]);
-
-         $response->assertStatus(200)
-         ->assertJson([
-             "result" => true
-         ]);
-     }
 
      public function testPalindrimes3()
      {
