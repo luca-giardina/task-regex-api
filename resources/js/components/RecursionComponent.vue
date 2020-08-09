@@ -40,38 +40,21 @@
 </template>
 
 <script>
-import axios from 'axios';
+import Helpers from '../mixins/Helpers'
 
 export default {
+    mixins: [Helpers],
     data() {
         return {
-            recursion: "",
-            result: "",
-            errors: ""
+            recursion: ""
         }
     },
     mounted() {
         console.log('Recursion mounted.')
     },
     methods: {
-        clearResults() {
-            this.errors = ""
-            this.result = ""
-        },
         recursionCheck() {
-            this.clearResults()
-            axios.post('/api/recursion', {
-                string: this.recursion
-            }).then(response => {
-                if(response.status == 200) {
-                    this.result = response.data.result
-                }
-                else {
-                    this.errors = response.errors
-                }
-            }).catch(error => {
-                this.errors = error.response.data.message
-            })
+            this.getResult('/api/recursion', this.recursion)
         }
     }
 }

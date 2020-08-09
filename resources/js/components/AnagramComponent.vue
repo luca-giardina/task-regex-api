@@ -40,9 +40,10 @@
 </template>
 
 <script>
-import axios from 'axios';
+import Helpers from '../mixins/Helpers'
 
 export default {
+    mixins: [Helpers],
     data() {
         return {
             anagram: ""
@@ -52,24 +53,8 @@ export default {
         console.log('Anagram mounted.')
     },
     methods: {
-        clearResults() {
-            this.errors = ""
-            this.result = ""
-        },
         anagramCheck() {
-            this.clearResults()
-            axios.post('/api/anagram', {
-                string: this.anagram
-            }).then(response => {
-                if(response.status == 200) {
-                    this.result = response.data.result
-                }
-                else {
-                    this.errors = response.errors
-                }
-            }).catch(error => {
-                this.errors = error.response.data.message
-            })
+            this.getResult('/api/anagram', this.anagram)
         }
     }
 }

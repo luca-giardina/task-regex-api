@@ -40,38 +40,21 @@
 </template>
 
 <script>
-import axios from 'axios';
+import Helpers from '../mixins/Helpers'
 
 export default {
+    mixins: [Helpers],
     data() {
         return {
-            palindrimes: "",
-            result: "",
-            errors: ""
+            palindrimes: ""
         }
     },
     mounted() {
         console.log('Palindrimes mounted.')
     },
     methods: {
-        clearResults() {
-            this.errors = ""
-            this.result = ""
-        },
         palindrimesCheck() {
-            this.clearResults()
-            axios.post('/api/palindrimes', {
-                string: this.palindrimes
-            }).then(response => {
-                if(response.status == 200) {
-                    this.result = response.data.result
-                }
-                else {
-                    this.errors = response.errors
-                }
-            }).catch(error => {
-                this.errors = error.response.data.message
-            })
+            this.getResult('/api/palindrimes', this.palindrimes)
         }
     }
 }

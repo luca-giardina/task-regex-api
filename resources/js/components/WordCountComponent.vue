@@ -40,38 +40,21 @@
 </template>
 
 <script>
-import axios from 'axios';
+import Helpers from '../mixins/Helpers'
 
 export default {
+    mixins: [Helpers],
     data() {
         return {
-            wordCount: "",
-            result: "",
-            errors: ""
+            wordCount: ""
         }
     },
     mounted() {
         console.log('Word count mounted.')
     },
     methods: {
-        clearResults() {
-            this.errors = ""
-            this.result = ""
-        },
         wordCountCheck() {
-            this.clearResults()
-            axios.post('/api/word-count', {
-                string: this.wordCount
-            }).then(response => {
-                if(response.status == 200) {
-                    this.result = response.data.result
-                }
-                else {
-                    this.errors = response.errors
-                }
-            }).catch(error => {
-                this.errors = error.response.data.message
-            })
+            this.getResult('/api/word-count', this.wordCount)
         }
     }
 }
